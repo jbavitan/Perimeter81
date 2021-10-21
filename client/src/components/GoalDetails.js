@@ -32,7 +32,7 @@ const GoalDetails = (props) => {
     return (
         goal ? <>
             <Button onClick={goToEditPage} style={{ backgroundColor: 'grey', position: 'fixed', top: '13%', right: '6%' }}>Edit</Button>
-            <h1 style={{ paddingLeft: '6%' }}>{goal.name}</h1>
+            <h1 style={{ padding: '6% 6% 0% 6%' }}>{goal.name}</h1>
             {goal && <Grid container spacing={1} style={{ padding: '5%' }}>
                 <Grid item xs={4}>
                     <FormControl>

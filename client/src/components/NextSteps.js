@@ -24,7 +24,7 @@ const NextSteps = () => {
 
     return (
         <div style={{ textAlign: 'center' }}>
-            <Grid container spacing={1}>
+            <Grid container justifyContent='center' spacing={1}>
                 <Grid item xs={12}>
                     <h1 style={{ borderBottom: '1px solid black', display: 'inline' }}>Next Steps To Complete</h1>
                 </ Grid>

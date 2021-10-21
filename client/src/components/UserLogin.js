@@ -40,6 +40,7 @@ const UserLogin = (props) => {
 
     return (
         <>
+            <h2 style={{ padding: '0% 5% 0% 5%' }}>User Login</h2>
             <Grid container spacing={1} style={{ padding: '5%' }}>
                 <Grid item xs={4}>
                     <FormControl>

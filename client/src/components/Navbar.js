@@ -7,7 +7,7 @@ const Navbar = () => {
     const { currUser } = useContext(userContext);
 
     return (
-        <Grid container spacing={1} alignItems="center" style={{ backgroundColor: 'lightgrey' }}>
+        <Grid container spacing={1} alignItems="center" style={{ backgroundColor: 'lightgrey', position: 'fixed', zIndex: '1000' }}>
             <Grid item xs={3}><span style={{ fontWeight: 'bold', marginLeft: '2%' }}>Welcome {currUser.fullName.split(' ')[0]}</ span></Grid>
             <Grid item xs={2} >
                 <Button style={{ backgroundColor: 'grey', marginTop: '4%', width: '95%' }} onClick={() => history.push(`/goals`)}>

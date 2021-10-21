@@ -23,8 +23,7 @@ const CreateGoal = () => {
         description: '',
         name: '',
         dueDate: new Date(),
-        completed: false,
-        stepIndex: undefined,
+        completed: false
     }
 
     useEffect(() => {
@@ -34,10 +33,6 @@ const CreateGoal = () => {
     const getGoalForEdit = async () => {
         try {
             const goalFromServer = await getGoal(id, currUser);
-            if (goalFromServer.data.steps?.length) setGoalToCreate(prev => {
-                prev.steps = [...goalFromServer.data.steps];
-                return prev
-            })
             setGoalToCreate(goalFromServer.data);
         } catch (error) {
             alert('Error occured while fetching the goal details');
@@ -55,24 +50,20 @@ const CreateGoal = () => {
     }
 
     const setField = (field, value) => {
-        setGoalToCreate((prev) => {
-            return {
-                ...prev,
-                [field]: value
-            }
-        })
+        setGoalToCreate({ ...goalToCreate, [field]: value });
     }
 
     const addStep = () => {
         let index = 0;
         if (goalToCreate.steps?.length) {
-            const nextIndex = goalToCreate.steps.reduce((prev, curr) => (+prev.id > +curr.id) ? prev : curr);
-            index = nextIndex;
+            const goalWithGreatestIndex = goalToCreate.steps.reduce((prev, curr) => (+prev.id > +curr.id) ? prev : curr);
+            index = goalWithGreatestIndex.stepIndex + 1;
         }
         const newStep = { ...initialStep, stepIndex: index };
         setGoalToCreate(prev => {
-            prev.steps = [...prev.steps, newStep]
-            return prev
+            const currGoal = { ...prev };
+            currGoal.steps = [...currGoal.steps, newStep];
+            return currGoal;
         })
     }
 
@@ -80,10 +71,10 @@ const CreateGoal = () => {
         <div style={{ position: 'relative' }}>
             <Grid container spacing={1} style={{ padding: '5%' }}>
                 <Grid item xs={6} justifyContent='flex-start' >
-                    <h1 style={{ paddingLeft: '6%' }}>{id ? 'Edit' : 'New'} Goal</h1>
+                    <h1 style={{ padding: '0% 6% 6% 06%' }}>{id ? 'Edit' : 'New'} Goal</h1>
                 </ Grid>
                 <Grid item xs={6} style={{ textAlign: 'right' }}>
-                    <Button onClick={saveGoal} style={{ backgroundColor: 'lightGreen' }}>Save</Button>
+                    <Button onClick={saveGoal} style={{ backgroundColor: 'lightGreen', position: 'fixed', right: '5%' }}>Save</Button>
                 </Grid>
                 <Grid item xs={4}>
                     <FormControlLabel
@@ -110,19 +101,18 @@ const CreateGoal = () => {
                 </Grid>
                 <Grid item xs={7} style={{ marginTop: '5%' }}>
                     <FormControlLabel
-
                         labelPlacement='start'
                         control={<Input style={{ marginLeft: '2%', width: '67vw' }} value={goalToCreate.description} onChange={(event) => setField('description', event.target.value)} />}
                         label="Description"
                     />
                 </Grid>
-                <Grid item xs={9} style={{ marginTop: '4%' }}>
+                <Grid item xs={12} style={{ marginTop: '4%' }}>
                     <IconButton onClick={addStep} style={{ width: '50px', backgroundColor: 'grey' }}>+</ IconButton>
                     {goalToCreate?.steps?.length ?
                         <FormControl style={{ width: '90%' }}>
-                            <InputLabel style={{ marginLeft: '2%' }}>Steps</InputLabel>
+                            <h3 style={{ marginLeft: '2%' }}>Steps</h3>
                             {goalToCreate.steps.map((step, index) => {
-                                return <CreateStep key={step?._id ? step._id : index} step={id ? step : undefined} setGoal={setGoalToCreate} />
+                                return <CreateStep key={step._id ? step._id : index} step={step} setGoal={setGoalToCreate} />
                             })}
                         </FormControl> : <span>NO STEPS</ span>}
                 </Grid>

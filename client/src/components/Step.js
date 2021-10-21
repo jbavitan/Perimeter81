@@ -5,7 +5,7 @@ const Step = (props) => {
     const { stepDetails } = props;
 
     return (
-        stepDetails && <ul style={{ textAlign: 'left', listStyle: 'none' }}>
+        stepDetails && <ul style={{ textAlign: 'center', listStyle: 'none', padding: '0'}}>
             <li>
                 <h4>{stepDetails.name}</h4>
             </ li>
