@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Grid, FormControl, InputLabel, Input, Button } from '@material-ui/core';
 import history from '../history';
-import { registerUser, userLogin } from '../Api/usersApi';
+import { userLogin } from '../Api/usersApi';
 import userContext from '../userContex';
 
 const UserLogin = (props) => {

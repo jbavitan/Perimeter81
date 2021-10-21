@@ -1,20 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { Checkbox, FormLabel, Grid, FormControl, InputLabel, Input, FormControlLabel } from '@material-ui/core';
+import React from 'react';
+import { Checkbox, Grid, FormControl, InputLabel, Input, FormControlLabel } from '@material-ui/core';
 import { DatePicker, MuiPickersUtilsProvider, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
 const CreateStep = (props) => {
     const { step, setGoal } = props;
-
-    // useEffect(() => {
-    //     setStepToCreate(step)
-    // }, [step])
-
-    // if (stepToCreate) setSteps((prev) => {
-    //     const foundIndex = prev.findIndex(step => step.stepIndex == stepToCreate.stepIndex);
-    //     if (foundIndex !== -1) prev[foundIndex] = stepToCreate;
-    //     return prev;
-    // })
 
     const setField = (field, value) => {
         setGoal((prev) => {

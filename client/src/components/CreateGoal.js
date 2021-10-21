@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { addGoal, getGoal, updateGoal } from '../Api/goalsApi';
-import { Checkbox, IconButton, Grid, FormControl, InputLabel, Input, FormControlLabel, Button } from '@material-ui/core';
+import { Checkbox, IconButton, Grid, FormControl, Input, FormControlLabel, Button } from '@material-ui/core';
 import { DatePicker, MuiPickersUtilsProvider, } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import CreateStep from './CreateStep';
