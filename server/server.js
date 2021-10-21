@@ -16,10 +16,6 @@ connection.once('open', () => {
     console.log(`We're connected to MongoDB!`)
 })
 
-app.get('/', (req, res) => {
-    res.send('hey')
-})
-
 const goalsRouter = require('./Routes/goals');
 const stepsRouter = require('./Routes/steps');
 const usersRouter = require('./Routes/users');

@@ -66,23 +66,23 @@ router.post("/login", async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
-    try {
-        const users = await User.find();
-        res.json(users);
-    } catch (error) {
-        res.status(400).json(`Error occured: ${error}`);
-    }
-})
+// router.get('/', async (req, res) => {
+//     try {
+//         const users = await User.find();
+//         res.json(users);
+//     } catch (error) {
+//         res.status(400).json(`Error occured: ${error}`);
+//     }
+// })
 
-router.get('/:fullName', async (req, res) => {
-    try {
-        const user = await User.findOne({ fullName: req.params.fullName });
-        res.json(user);
-    } catch (error) {
-        res.status(400).json(`Error occured: ${error}`);
-    }
-})
+// router.get('/:fullName', async (req, res) => {
+//     try {
+//         const user = await User.findOne({ fullName: req.params.fullName });
+//         res.json(user);
+//     } catch (error) {
+//         res.status(400).json(`Error occured: ${error}`);
+//     }
+// })
 
 // router.post("/add", async (req, res) => {
 //     try {
